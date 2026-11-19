@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços Disponíveis — Work Connection</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/servicos.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO SUPERIOR -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="brand-logo">Work Connection</a>
+
+            <nav class="nav-links">
+                <a href="servicos.html" class="nav-item active">Serviços Disponíveis</a>
+                <a href="empresas.html" class="nav-item">Empresas</a>
+                <a href="ganhos.html" class="nav-item">O quanto você pode ganhar por dia</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="btnAbrirModalPublicar" class="btn-publish">+ Publicar Serviço</button>
+                <a href="perfil.html" id="userBadge" class="user-badge" style="text-decoration:none; color:inherit;"
+                    title="Abrir meu perfil">
+                    <span id="userAvatar">WC</span>
+                    <span id="userNameDisplay">Visitante</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- BARRA DE BUSCA E FILTROS (IGUAL À REFERÊNCIA) -->
+    <section class="search-header">
+        <div class="search-container">
+            <div class="search-bar">
+                <div class="search-field">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="inputBuscaServico"
+                        placeholder="Cargo, serviço ou especialidade (ex: Elétrica, TI, Ar-Condicionado)">
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="search-field">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <input type="text" id="inputBuscaLocal" placeholder="Cidade ou bairro (ex: Cuiabá, Centro)">
+                </div>
+
+                <button id="btnBuscar" class="btn-search">Buscar</button>
+            </div>
+
+            <!-- FILTROS RÁPIDOS (PILLS) -->
+            <div class="filter-pills">
+                <button class="pill active" data-filter="todos">Todos os chamados</button>
+                <button class="pill" data-filter="Residência">Para Residências</button>
+                <button class="pill" data-filter="Empresa">Para Empresas</button>
+                <button class="pill" data-filter="TI e Redes">TI e Redes</button>
+                <button class="pill" data-filter="Elétrica">Elétrica</button>
+                <button class="pill" data-filter="Refrigeração">Refrigeração</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL EM DUAS COLUNAS (LISTA À ESQUERDA + DETALHES À DIREITA) -->
+    <main class="main-board">
+        <div class="board-container">
+
+            <!-- COLUNA ESQUERDA: LISTA DE SERVIÇOS -->
+            <aside class="jobs-list-column">
+                <div class="list-header">
+                    <span id="contadorResultados">Mostrando 0 serviços disponíveis</span>
+                    <select id="ordenarSelect" class="sort-select">
+                        <option value="recentes">Mais recentes</option>
+                        <option value="maior-valor">Maior valor/dia</option>
+                    </select>
+                </div>
+
+                <div id="listaServicos" class="cards-stack">
+                    <!-- Cards são inseridos via JavaScript -->
+                </div>
+            </aside>
+
+            <!-- COLUNA DIREITA: PAINEL DE DETALHES DO SERVIÇO SELECIONADO -->
+            <section id="painelDetalhes" class="job-detail-column">
+                <!-- Detalhes completos são carregados dinamicamente aqui -->
+            </section>
+
+        </div>
+    </main>
+
+    <!-- MODAL PARA PUBLICAR NOVO SERVIÇO -->
+    <div id="modalPublicar" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Publicar novo chamado técnico</h2>
+                <button id="btnFecharModal" class="btn-close-modal" aria-label="Fechar">&times;</button>
+            </div>
+
+            <form id="formNovoServico" class="modal-form">
+                <div class="input-group">
+                    <label for="novoTitulo">Título do serviço *</label>
+                    <input type="text" id="novoTitulo" placeholder="Ex: Instalação de 2 câmeras Wi-Fi e configuração"
+                        required>
+                </div>
+
+                <div class="modal-row">
+                    <div class="input-group">
+                        <label for="novoContratante">Nome ou Empresa *</label>
+                        <input type="text" id="novoContratante" placeholder="Ex: Clínica Sorriso / Ana Paula" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="novoTipoLocal">Local de atendimento *</label>
+                        <select id="novoTipoLocal">
+                            <option value="Residência">Residência (Casa / Apto)</option>
+                            <option value="Empresa">Empresa / Comércio</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-row">
+                    <div class="input-group">
+                        <label for="novaCategoria">Categoria técnica *</label>
+                        <select id="novaCategoria">
+                            <option value="TI e Redes">TI e Redes</option>
+                            <option value="Elétrica">Elétrica</option>
+                            <option value="Refrigeração">Refrigeração</option>
+                            <option value="Segurança Eletrônica">Segurança Eletrônica</option>
+                            <option value="Hidráulica">Hidráulica e Predial</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="novoValor">Valor ofertado (R$) *</label>
+                        <input type="number" id="novoValor" placeholder="Ex: 250" min="30" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="novaCidade">Bairro e Cidade *</label>
+                    <input type="text" id="novaCidade" placeholder="Ex: Jardim das Américas, Cuiabá - MT" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="novaDescricao">Descrição detalhada do problema ou serviço *</label>
+                    <textarea id="novaDescricao" rows="3"
+                        placeholder="Explique o que precisa ser feito, ferramentas necessárias ou horário preferencial..."
+                        required></textarea>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" id="btnCancelarModal" class="btn-outline-sm">Cancelar</button>
+                    <button type="submit" class="btn-primary-sm">Publicar Chamado</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- NOTIFICAÇÃO TOAST -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="js/servicos.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,462 @@
+:root {
+    --primary-orange: #ffc523;
+    --primary-orange-hover: #eab00e;
+    --accent-blue: #2563eb;
+    --accent-purple: #7c3aed;
+    --dark-black: #18181b;
+    --dark-black-hover: #27272a;
+    --text-main: #18181b;
+    --text-muted: #52525b;
+    --border-color: #e4e4e7;
+    --bg-white: #ffffff;
+    --bg-light-gray: #f5f6f7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: var(--bg-white);
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-logo {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--dark-black);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.94rem;
+    font-weight: 600;
+    padding: 22px 0;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    border-bottom-color: var(--primary-orange);
+}
+
+.user-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #f4f4f5;
+    border: 1.5px solid #d4d4d8;
+    padding: 5px 12px 5px 6px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--dark-black);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.user-badge:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px #000000;
+}
+
+.user-avatar-svg {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--dark-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================= CONTAINER & BUSCA ================= */
+.companies-container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+}
+
+.search-hero {
+    margin-bottom: 48px;
+}
+
+.search-hero h1 {
+    font-size: 2.35rem;
+    font-weight: 800;
+    color: var(--dark-black);
+    letter-spacing: -0.025em;
+    margin-bottom: 24px;
+}
+
+.search-label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--dark-black);
+    margin-bottom: 8px;
+}
+
+.search-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.search-input-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 50px;
+    padding: 0 16px;
+    border: 1.5px solid #71717a;
+    border-radius: 10px;
+    background-color: #ffffff;
+    transition: border-color 0.2s;
+}
+
+.search-input-box:focus-within {
+    border-color: var(--accent-blue);
+}
+
+.search-input-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 0.96rem;
+    color: var(--text-main);
+}
+
+/* Botão Achar Empresas (Laranja #FFC523 + sombra preta no hover) */
+.btn-primary-search {
+    height: 50px;
+    padding: 0 32px;
+    background-color: white;
+    color: var(--dark-black);
+    border: 2px solid var(--dark-black);
+    border-radius: 10px;
+    font-size: 0.96rem;
+    font-weight: 800;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s;
+}
+
+.btn-primary-search:hover {
+    background-color: var(--primary-orange-hover);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #000000;
+}
+
+.btn-primary-search:active {
+    transform: translate(0, 0);
+    box-shadow: none;
+}
+
+.salary-link {
+    display: inline-block;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.salary-link:hover {
+    color: var(--accent-purple);
+}
+
+/* ================= EMPRESAS POPULARES (GRID 3 COLUNAS) ================= */
+.section-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.section-top h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--dark-black);
+}
+
+.count-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.companies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px 24px;
+}
+
+.company-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.company-item:hover {
+    background-color: #fafafa;
+    border-color: var(--dark-black);
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #000000;
+}
+
+.company-logo-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 10px;
+    border: 1.5px solid #e4e4e7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: -0.3px;
+    flex-shrink: 0;
+    text-align: center;
+    padding: 4px;
+}
+
+.company-info {
+    flex: 1;
+}
+
+.company-name {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--dark-black);
+    margin-bottom: 2px;
+}
+
+.company-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    margin-bottom: 8px;
+}
+
+.stars {
+    color: var(--dark-black);
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.reviews-count {
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+.company-sublinks {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.company-sublinks span:hover {
+    color: var(--accent-purple);
+    text-decoration: underline;
+}
+
+/* ================= MODAL DETALHES DA EMPRESA ================= */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 500;
+}
+
+.modal-box {
+    background-color: #ffffff;
+    border: 2px solid var(--dark-black);
+    border-radius: 14px;
+    width: 100%;
+    max-width: 520px;
+    padding: 26px;
+    box-shadow: 6px 6px 0px #000000;
+}
+
+.modal-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.company-logo-lg {
+    width: 58px;
+    height: 58px;
+    border-radius: 12px;
+    border: 1.5px solid var(--dark-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.modal-top h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.modal-sector {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.btn-close {
+    position: absolute;
+    right: 0;
+    top: -4px;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.modal-desc {
+    font-size: 0.92rem;
+    color: #3f3f46;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.modal-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.m-stat {
+    background-color: var(--bg-light-gray);
+    border: 1px solid #e4e4e7;
+    border-radius: 8px;
+    padding: 10px 12px;
+}
+
+.m-stat span {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.m-stat strong {
+    font-size: 0.92rem;
+    font-weight: 800;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn-outline-sm {
+    padding: 10px 16px;
+    background-color: #ffffff;
+    border: 1.5px solid var(--dark-black);
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-primary-sm {
+    padding: 10px 18px;
+    background-color: var(--primary-orange);
+    color: var(--dark-black);
+    border: 2px solid var(--dark-black);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 800;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary-sm:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0px #000000;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 920px) {
+    .companies-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 680px) {
+    .nav-links {
+        display: none;
+    }
+
+    .search-row {
+        flex-direction: column;
+    }
+
+    .companies-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-stats {
+        grid-template-columns: 1fr;
+    }
+}

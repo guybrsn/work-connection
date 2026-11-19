@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil — Work Connection</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/perfil.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO SUPERIOR -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="servicos.html" class="brand-logo">Work Connection</a>
+
+            <nav class="nav-links">
+                <a href="servicos.html" class="nav-item">Serviços Disponíveis</a>
+                <a href="empresas.html" class="nav-item">Empresas</a>
+                <a href="ganhos.html" class="nav-item">O quanto você pode ganhar por dia</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="servicos.html" class="btn-back">← Voltar aos Serviços</a>
+                <button id="btnSairConta" class="btn-logout">Sair da conta</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO DO PERFIL (ESTILO LINKEDIN) -->
+    <main class="profile-container">
+
+        <!-- CARD SUPERIOR: CAPA + FOTO + INFORMAÇÕES PRINCIPAIS -->
+        <!-- CARD SUPERIOR: CAPA ABSTRATA SVG + FOTO/ÍCONE SVG + INFORMAÇÕES -->
+        <section class="profile-hero-card">
+            <div class="cover-banner">
+                <!-- SVG Abstrato Preto e Branco de Fundo -->
+                <svg class="cover-abstract-svg" viewBox="0 0 1200 220" preserveAspectRatio="none" xmlns="http://w3.org">
+                    <rect width="1200" height="220" fill="#18181B" />
+                    <!-- Formas geométricas e ondas minimalistas em preto/branco/cinza -->
+                    <circle cx="1020" cy="40" r="210" fill="none" stroke="#FFFFFF" stroke-opacity="0.12"
+                        stroke-width="2" />
+                    <circle cx="1020" cy="40" r="145" fill="none" stroke="#FFFFFF" stroke-opacity="0.2"
+                        stroke-width="2" />
+                    <circle cx="1020" cy="40" r="80" fill="#FFFFFF" fill-opacity="0.06" />
+                    <path d="M0 175 C 260 95, 480 230, 760 130 C 960 60, 1080 140, 1200 95 L 1200 220 L 0 220 Z"
+                        fill="#FFFFFF" fill-opacity="0.08" />
+                    <path d="M0 195 C 320 140, 560 225, 890 155 C 1030 125, 1120 165, 1200 145 L 1200 220 L 0 220 Z"
+                        fill="#27272A" />
+                    <line x1="90" y1="0" x2="240" y2="220" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1.5" />
+                    <line x1="140" y1="0" x2="290" y2="220" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1.5" />
+                </svg>
+
+                <span class="cover-badge" id="badgePerfilTipo">Técnico Verificado</span>
+            </div>
+
+            <div class="profile-main-info">
+                <div class="avatar-row">
+                    <!-- Foto de perfil ou Ícone SVG de Usuário Preto e Branco -->
+                    <div class="avatar-wrapper">
+                        <img id="fotoPerfilImg" src="" alt="Foto de perfil" class="hidden">
+
+                        <div id="avatarIniciais" class="avatar-initials" aria-label="Ícone de usuário">
+                            <svg width="68" height="68" viewBox="0 0 24 24" fill="none" xmlns="http://w3.org">
+                                <circle cx="12" cy="8" r="4.2" fill="#FFFFFF" />
+                                <path d="M4.5 20.2C4.5 16.4 7.8 14 12 14C16.2 14 19.5 16.4 19.5 20.2" stroke="#FFFFFF"
+                                    stroke-width="2.4" stroke-linecap="round" />
+                            </svg>
+                        </div>
+
+                        <!-- Botão de Câmera para carregar foto -->
+                        <label for="inputFotoPerfil" class="btn-upload-photo" title="Alterar foto de perfil">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.2">
+                                <path
+                                    d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                                </path>
+                                <circle cx="12" cy="13" r="4"></circle>
+                            </svg>
+                        </label>
+                        <input type="file" id="inputFotoPerfil" accept="image/*" class="hidden">
+                    </div>
+
+                    <div class="hero-buttons">
+                        <button id="btnToggleEditar" class="btn-primary">Editar Perfil</button>
+                    </div>
+                </div>
+
+                <div class="user-headline">
+                    <h1 id="displayNome">Nome do Usuário</h1>
+                    <p id="displayTituloProfissional" class="headline-role">Especialista Técnico • Work Connection</p>
+                    <div class="headline-meta">
+                        <span id="displayCidade">Cuiabá - MT</span>
+                        <span>•</span>
+                        <span id="displayEmail">email@exemplo.com</span>
+                        <span>•</span>
+                        <span id="displayTelefone">(65) 99999-9999</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- GRID INFERIOR: SOBRE / EXPERIÊNCIA + DADOS EDITÁVEIS -->
+        <div class="profile-grid">
+
+            <!-- COLUNA ESQUERDA: RESUMO E SERVIÇOS REALIZADOS -->
+            <div class="profile-left-col">
+                <section class="info-card">
+                    <h2>Sobre e Experiência Profissional</h2>
+                    <p id="displayResumo" class="bio-text">
+                        Nenhuma descrição informada ainda. Clique em "Editar Perfil" para contar sua experiência.
+                    </p>
+
+                    <div class="stats-row">
+                        <div class="stat-pill">
+                            <span class="stat-label">Área Principal</span>
+                            <strong id="displayArea">Não definida</strong>
+                        </div>
+                        <div class="stat-pill">
+                            <span class="stat-label">Experiência</span>
+                            <strong id="displayTempoExp">Não informada</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="info-card">
+                    <h2>Serviços que já realizei</h2>
+                    <div id="displayTagsServicos" class="tags-list">
+                        <!-- Tags carregadas via JS -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- COLUNA DIREITA: FORMULÁRIO DE EDIÇÃO DE DADOS -->
+            <aside class="profile-right-col">
+                <section id="cardFormularioEdicao" class="info-card edit-card">
+                    <div class="edit-header">
+                        <h2>Atualizar Dados Cadastrais</h2>
+                        <span class="edit-hint">Altere suas informações e salve abaixo</span>
+                    </div>
+
+                    <form id="formEditarPerfil">
+                        <div class="input-group">
+                            <label for="editNome">Nome completo</label>
+                            <input type="text" id="editNome" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="editEmail">E-mail</label>
+                            <input type="email" id="editEmail" required>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="editTelefone">WhatsApp / Telefone</label>
+                            <input type="tel" id="editTelefone">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="editCidade">Cidade e Estado</label>
+                            <input type="text" id="editCidade">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="editArea">Área de Atuação</label>
+                            <select id="editArea">
+                                <option value="ti-redes">Suporte de TI, Computadores e Redes</option>
+                                <option value="eletrica">Instalações e Manutenção Elétrica</option>
+                                <option value="refrigeracao">Ar-Condicionado e Refrigeração</option>
+                                <option value="seguranca">CFTV, Câmeras e Segurança Eletrônica</option>
+                                <option value="hidraulica">Manutenção Hidráulica e Predial</option>
+                                <option value="automacao">Automação Residencial / Comercial</option>
+                                <option value="outros">Outra área técnica</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="editTempoExp">Tempo de Experiência</label>
+                            <select id="editTempoExp">
+                                <option value="iniciante">Iniciante (menos de 1 ano)</option>
+                                <option value="1-3">1 a 3 anos de experiência</option>
+                                <option value="3-5">3 a 5 anos de experiência</option>
+                                <option value="5+">Mais de 5 anos de experiência</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="editNovoServico">Adicionar novo serviço realizado</label>
+                            <div class="add-tag-row">
+                                <input type="text" id="editNovoServico" placeholder="Ex: Instalação de servidor">
+                                <button type="button" id="btnAddTagPerfil" class="btn-blue-sm">+</button>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="editResumo">Resumo profissional</label>
+                            <textarea id="editResumo" rows="3"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary full-btn">Salvar Alterações</button>
+                    </form>
+                </section>
+            </aside>
+
+        </div>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="js/perfil.js"></script>
+</body>
+
+</html>

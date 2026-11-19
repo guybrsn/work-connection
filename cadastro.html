@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se — Work Connection</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/cadastro.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO SUPERIOR -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="brand-logo">Work Connection</a>
+
+            <nav class="nav-links">
+                <a href="servicos.html" class="nav-item">Serviços Disponíveis</a>
+                <a href="empresas.html" class="nav-item">Empresas</a>
+                <a href="ganhos.html" class="nav-item">O quanto você pode ganhar por dia</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="index.html" class="btn-dark">Entrar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL DE CADASTRO -->
+    <main class="register-section">
+        <div class="register-header">
+            <span class="badge-step">Work Connection • Novo Perfil</span>
+            <h1>Crie sua conta na plataforma</h1>
+            <p>Preencha seus dados básicos e conte sua experiência para conectar-se a oportunidades reais na sua região.
+            </p>
+        </div>
+
+        <form id="registerForm" class="register-card">
+
+            <!-- SELETOR DE TIPO DE CONTA -->
+            <div class="account-type-selector">
+                <button type="button" class="type-btn active" data-type="tecnico">
+                    <span class="type-title">Sou Técnico / Prestador</span>
+                    <span class="type-desc">Quero encontrar e realizar serviços</span>
+                </button>
+
+                <button type="button" class="type-btn" data-type="cliente">
+                    <span class="type-title">Sou Cliente / Empresa</span>
+                    <span class="type-desc">Quero publicar chamados técnicos</span>
+                </button>
+            </div>
+
+            <!-- BLOCO 1: DADOS BÁSICOS -->
+            <fieldset class="form-block">
+                <legend>1. Dados Básicos</legend>
+
+                <div class="form-grid">
+                    <div class="input-group full-width">
+                        <label for="nomeCompleto">Nome completo (ou Razão Social) *</label>
+                        <input type="text" id="nomeCompleto" placeholder="Ex: Carlos Eduardo Silva" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="telefone">WhatsApp / Telefone *</label>
+                        <input type="tel" id="telefone" placeholder="(65) 99999-9999" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cidade">Cidade e Estado *</label>
+                        <input type="text" id="cidade" placeholder="Ex: Cuiabá - MT" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="senha">Crie uma senha *</label>
+                        <input type="password" id="senha" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- BLOCO 2: EXPERIÊNCIA PROFISSIONAL (EXIBIDO PARA TÉCNICOS) -->
+            <fieldset id="tecnicoFields" class="form-block">
+                <legend>2. Experiência e Área de Atuação</legend>
+
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="areaAtuacao">Área principal de atuação *</label>
+                        <select id="areaAtuacao">
+                            <option value="">Selecione sua especialidade...</option>
+                            <option value="ti-redes">Suporte de TI, Computadores e Redes</option>
+                            <option value="eletrica">Instalações e Manutenção Elétrica</option>
+                            <option value="refrigeracao">Ar-Condicionado e Refrigeração</option>
+                            <option value="seguranca">CFTV, Câmeras e Segurança Eletrônica</option>
+                            <option value="hidraulica">Manutenção Hidráulica e Predial</option>
+                            <option value="automacao">Automação Residencial / Comercial</option>
+                            <option value="outros">Outra área técnica</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="tempoExperiencia">Tempo de experiência *</label>
+                        <select id="tempoExperiencia">
+                            <option value="iniciante">Iniciante (menos de 1 ano)</option>
+                            <option value="1-3">1 a 3 anos de experiência</option>
+                            <option value="3-5">3 a 5 anos de experiência</option>
+                            <option value="5+">Mais de 5 anos de experiência</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label>Onde você aceita realizar atendimentos?</label>
+                        <div class="checkbox-row">
+                            <label class="check-pill">
+                                <input type="checkbox" name="localAtendimento" value="Residências" checked>
+                                <span>Residências (Casas / Apartamentos)</span>
+                            </label>
+                            <label class="check-pill">
+                                <input type="checkbox" name="localAtendimento" value="Empresas" checked>
+                                <span>Empresas e Comércios</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- ADICIONAR SERVIÇOS JÁ REALIZADOS (TAGS DINÂMICAS) -->
+                    <div class="input-group full-width">
+                        <label for="servicoInput">Quais serviços você já realizou? (Digite e pressione Enter ou clique
+                            em Adicionar)</label>
+                        <div class="tag-input-wrapper">
+                            <input type="text" id="servicoInput"
+                                placeholder="Ex: Formatação de PC, Instalação de Split 12000 BTUs, Troca de disjuntor...">
+                            <button type="button" id="btnAddServico" class="btn-add-tag">Adicionar</button>
+                        </div>
+                        <div id="servicosLista" class="tags-container">
+                            <!-- Tags adicionadas pelo usuário aparecem aqui -->
+                        </div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="resumoExperiencia">Conte um pouco sobre sua experiência e ferramentas que possui
+                            *</label>
+                        <textarea id="resumoExperiencia" rows="4"
+                            placeholder="Descreva projetos que já executou, certificações ou diferenciais do seu trabalho..."></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- BLOCO ALTERNATIVO (EXIBIDO SE ESCOLHER CLIENTE / EMPRESA) -->
+            <fieldset id="clienteFields" class="form-block hidden">
+                <legend>2. Perfil do Contratante</legend>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="tipoContratante">Você está cadastrando como:</label>
+                        <select id="tipoContratante">
+                            <option value="Pessoa Física (Residência)">Pessoa Física (Para minha casa)</option>
+                            <option value="Empresa / Comércio">Empresa / Comércio</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="demandaPrincipal">Qual tipo de serviço mais precisa?</label>
+                        <input type="text" id="demandaPrincipal"
+                            placeholder="Ex: Manutenção de computadores, elétrica...">
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- AÇÕES FINAIS -->
+            <div class="form-actions">
+                <a href="index.html" class="btn-secondary">Voltar para login</a>
+                <button type="submit" class="btn-primary">Finalizar Cadastro</button>
+            </div>
+
+        </form>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="js/cadastro.js"></script>
+</body>
+
+</html>

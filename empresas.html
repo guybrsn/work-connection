@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empresas Parceiras — Work Connection</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/empresas.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO SUPERIOR -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="servicos.html" class="brand-logo">Work Connection</a>
+
+            <nav class="nav-links">
+                <a href="servicos.html" class="nav-item">Serviços Disponíveis</a>
+                <a href="empresas.html" class="nav-item active">Empresas</a>
+                <a href="ganhos.html" class="nav-item">O quanto você pode ganhar por dia</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="perfil.html" class="user-badge" title="Meu Perfil">
+                    <span class="user-avatar-svg">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="8" r="4" fill="#FFFFFF" />
+                            <path d="M5 20C5 16.5 8 14 12 14C16 14 19 16.5 19 20" stroke="#FFFFFF" stroke-width="2.2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </span>
+                    <span id="userNameDisplay">Perfil</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL (INSPIRADO NA REFERÊNCIA) -->
+    <main class="companies-container">
+
+        <!-- SEÇÃO DE BUSCA SUPERIOR -->
+        <section class="search-hero">
+            <h1>Encontre excelentes empresas para prestar serviços</h1>
+
+            <label for="inputBuscaEmpresa" class="search-label">Nome da empresa ou área técnica</label>
+            <div class="search-row">
+                <div class="search-input-box">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#52525b" stroke-width="2.2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="inputBuscaEmpresa"
+                        placeholder="Ex: Bosch, Samsung, Siemens, Elétrica, TI...">
+                </div>
+                <button id="btnBuscarEmpresa" class="btn-primary-search">Achar empresas</button>
+            </div>
+
+            <a href="ganhos.html" class="salary-link">Deseja simular quanto você pode ganhar por dia?</a>
+        </section>
+
+        <!-- SEÇÃO: EMPRESAS POPULARES (GRID 3 COLUNAS IGUAL À REFERÊNCIA) -->
+        <section class="popular-section">
+            <div class="section-top">
+                <h2>Empresas populares na plataforma</h2>
+                <span id="contadorEmpresas" class="count-label">Mostrando 9 empresas</span>
+            </div>
+
+            <div id="gridEmpresas" class="companies-grid">
+                <!-- Cards gerados via JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL DE DETALHES DA EMPRESA E CHAMADOS ABERTOS -->
+    <div id="modalEmpresa" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-top">
+                <div id="modalLogoBox" class="company-logo-lg"></div>
+                <div>
+                    <h3 id="modalNomeEmpresa">Nome da Empresa</h3>
+                    <p id="modalSetorEmpresa" class="modal-sector">Setor • Avaliação</p>
+                </div>
+                <button id="btnFecharModalEmpresa" class="btn-close">&times;</button>
+            </div>
+
+            <p id="modalDescricaoEmpresa" class="modal-desc"></p>
+
+            <div class="modal-stats">
+                <div class="m-stat">
+                    <span>Média por diária</span>
+                    <strong id="modalMediaDiaria">R$ 350,00</strong>
+                </div>
+                <div class="m-stat">
+                    <span>Chamados ativos</span>
+                    <strong id="modalTotalChamados">4 abertos</strong>
+                </div>
+                <div class="m-stat">
+                    <span>Especialidade</span>
+                    <strong id="modalEspecialidade">Manutenção</strong>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnFecharSecundario" class="btn-outline-sm">Fechar</button>
+                <a href="servicos.html" class="btn-primary-sm">Ver chamados desta empresa →</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/empresas.js"></script>
+</body>
+
+</html>

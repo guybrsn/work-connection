@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quanto você pode ganhar por dia — Work Connection</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/ganhos.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO SUPERIOR -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="servicos.html" class="brand-logo">Work Connection</a>
+
+            <nav class="nav-links">
+                <a href="servicos.html" class="nav-item">Serviços Disponíveis</a>
+                <a href="empresas.html" class="nav-item">Empresas</a>
+                <a href="ganhos.html" class="nav-item active">O quanto você pode ganhar por dia</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="perfil.html" class="user-badge" title="Meu Perfil">
+                    <span class="user-avatar-svg">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="8" r="4" fill="#FFFFFF" />
+                            <path d="M5 20C5 16.5 8 14 12 14C16 14 19 16.5 19 20" stroke="#FFFFFF" stroke-width="2.2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </span>
+                    <span id="userNameDisplay">Perfil</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="earnings-container">
+
+        <!-- HERO -->
+        <section class="earnings-hero">
+            <span class="pill-tag">Transparência Work Connection</span>
+            <h1>Descubra quanto você pode ganhar por dia</h1>
+            <p>Simule seus ganhos diários como técnico autônomo atendendo residências ou empresas parceiras na sua
+                região.</p>
+        </section>
+
+        <!-- SIMULADOR INTERATIVO + RESULTADO -->
+        <section class="simulator-grid">
+
+            <!-- Controles do Simulador -->
+            <div class="sim-card">
+                <h2>Simulador de Diária Técnica</h2>
+
+                <div class="input-group">
+                    <label for="selectArea">Sua área técnica</label>
+                    <select id="selectArea">
+                        <option value="eletrica">Instalações e Manutenção Elétrica</option>
+                        <option value="refrigeracao">Ar-Condicionado e Refrigeração</option>
+                        <option value="ti-redes" selected>Suporte de TI, Computadores e Redes</option>
+                        <option value="seguranca">CFTV, Câmeras e Segurança Eletrônica</option>
+                        <option value="automacao">Automação Residencial e Comercial</option>
+                        <option value="hidraulica">Manutenção Hidráulica e Predial</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="selectExperiencia">Nível de experiência</label>
+                    <select id="selectExperiencia">
+                        <option value="1">Iniciante (até 1 ano)</option>
+                        <option value="1.2" selected>Intermediário (1 a 3 anos)</option>
+                        <option value="1.45">Avançado / Especialista (3+ anos)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Onde você pretende atender?</label>
+                    <div class="radio-pills">
+                        <button type="button" class="local-btn" data-mult="0.9">Residências</button>
+                        <button type="button" class="local-btn active" data-mult="1.15">Empresas</button>
+                        <button type="button" class="local-btn" data-mult="1.05">Ambos</button>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="rangeDias">Dias trabalhados por semana: <strong id="labelDias">5 dias</strong></label>
+                    <input type="range" id="rangeDias" min="1" max="6" value="5">
+                </div>
+            </div>
+
+            <!-- Painel de Resultado -->
+            <div class="result-card">
+                <div class="result-top">
+                    <span class="result-badge">Estimativa Média</span>
+                    <h3 id="tituloAreaResultado">Suporte de TI, Computadores e Redes</h3>
+                </div>
+
+                <div class="daily-big-box">
+                    <span>Ganho médio estimado por dia</span>
+                    <strong id="valorDiaria">R$ 345,00</strong>
+                    <small id="faixaDiaria">Faixa comum: R$ 280 a R$ 420 / dia</small>
+                </div>
+
+                <div class="projection-row">
+                    <div class="proj-box">
+                        <span>Por semana (<span id="diasSemanaTexto">5d</span>)</span>
+                        <strong id="valorSemanal">R$ 1.725,00</strong>
+                    </div>
+                    <div class="proj-box">
+                        <span>Projeção mensal (4 sem.)</span>
+                        <strong id="valorMensal">R$ 6.900,00</strong>
+                    </div>
+                </div>
+
+                <a href="servicos.html" class="btn-primary-full">Ver chamados disponíveis nessa área →</a>
+            </div>
+
+        </section>
+
+        <!-- MINI GRÁFICOS COMPARATIVOS (ÁREAS + EMPRESAS) -->
+        <section class="charts-grid">
+
+            <!-- Mini Gráfico 1: Ganho por dia por Área Técnica -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <h3>Média por dia por Área Técnica</h3>
+                        <p>Comparativo entre atendimento Residencial e Empresarial</p>
+                    </div>
+                    <div class="chart-legend">
+                        <span><i class="dot-blue"></i> Residência</span>
+                        <span><i class="dot-orange"></i> Empresa</span>
+                    </div>
+                </div>
+
+                <div id="graficoAreas" class="bar-chart-list">
+                    <!-- Barras renderizadas via JS -->
+                </div>
+            </div>
+
+            <!-- Mini Gráfico 2: Quanto pagam as Empresas Parceiras por dia -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <h3>Média por dia nas Empresas Parceiras</h3>
+                        <p>Valores médios pagos por diária técnica verificada</p>
+                    </div>
+                    <span class="tag-purple">Top Empresas</span>
+                </div>
+
+                <div id="graficoEmpresas" class="company-chart-list">
+                    <!-- Barras de empresas renderizadas via JS -->
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/ganhos.js"></script>
+</body>
+
+</html>

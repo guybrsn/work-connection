@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo — Serviços Técnicos Sob Demanda</title>
+    <!-- Fonte moderna parecida com a da referência -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Ícones (Lucide Icons via CDN) -->
+    <script src="https://unpkg.com"></script>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO SUPERIOR -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <!-- Canto superior esquerdo: Logo provisória -->
+            <a href="index.html" class="brand-logo">Work Connection</a>
+
+            <!-- Meio superior: Opções do site -->
+            <nav class="nav-links">
+                <a href="servicos.html" class="nav-item">Serviços Disponíveis</a>
+                <a href="empresas.html" class="nav-item">Empresas</a>
+                <a href="ganhos.html" class="nav-item">O quanto você pode ganhar por dia</a>
+            </nav>
+
+
+            <!-- Canto superior direito: Botão Entrar -->
+            <div class="nav-actions">
+                <button id="btnHeaderLogin" class="btn-dark">
+                    <i data-lucide="log-in"></i>
+                    <span>Entrar</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SEÇÃO PRINCIPAL (HERO + LOGIN) -->
+    <main class="hero-section">
+        <h1 class="hero-title">Encontre o serviço técnico perfeito para você</h1>
+
+        <div class="login-wrapper">
+            <!-- Ilustração decorativa esquerda (estilo traço limpo) -->
+            <div class="illustration-left" aria-hidden="true">
+                <svg viewBox="0 0 180 140" fill="none" xmlns="http://w3.org">
+                    <path
+                        d="M120 40C120 30 132 25 138 35C144 25 156 30 156 40C156 54 138 66 138 66C138 66 120 54 120 40Z"
+                        stroke="#18181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <rect x="75" y="75" width="42" height="28" rx="4" transform="rotate(-12 75 75)" stroke="#18181B"
+                        stroke-width="2" />
+                    <line x1="82" y1="84" x2="108" y2="79" stroke="#18181B" stroke-width="2" stroke-linecap="round" />
+                    <line x1="84" y1="91" x2="104" y2="87" stroke="#18181B" stroke-width="2" stroke-linecap="round" />
+                    <line x1="15" y1="95" x2="60" y2="88" stroke="#18181B" stroke-width="2" stroke-linecap="round" />
+                    <line x1="25" y1="112" x2="72" y2="105" stroke="#18181B" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </div>
+
+            <!-- Caixa Central de Login -->
+            <div class="login-box">
+                <div class="mini-logos">
+                    <span class="mini-brand-green">Work Connection</span>
+                    <span class="dot">•</span>
+                    <span class="mini-brand-sub">TechConnect</span>
+                </div>
+
+                <h2 class="login-subtitle">Acesso único para conectar técnicos, casas e empresas</h2>
+                <p class="login-description">
+                    Simplifique sua busca, aceite chamados na sua região ou publique demandas técnicas com um <a
+                        href="#" id="linkAcessoUnico">login único</a>.
+                </p>
+
+                <!-- Botão Google (Verde destaque igual à referência) -->
+                <button id="btnGoogleLogin" class="btn-google">
+                    <span class="google-icon">
+                        <svg width="18" height="18" viewBox="0 0 24 24">
+                            <path fill="#4285F4"
+                                d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z" />
+                            <path fill="#34A853"
+                                d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z" />
+                            <path fill="#FBBC05"
+                                d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z" />
+                            <path fill="#EA4335"
+                                d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z" />
+                        </svg>
+                    </span>
+                    <span>Entrar com Google</span>
+                </button>
+
+                <!-- Botão E-mail -->
+                <button id="btnEmailToggle" class="btn-outline">
+                    <a href="cadastro.html" id="btnEmailToggle" class="btn-outline">Cadastre-se</a>
+                </button>
+
+                <!-- Formulário de E-mail (abre ao clicar no botão acima) -->
+                <form id="emailForm" class="email-form hidden">
+                    <div class="input-group">
+                        <label for="userEmail">E-mail institucional ou pessoal</label>
+                        <input type="email" id="userEmail" placeholder="voce@exemplo.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="userType">Como deseja acessar?</label>
+                        <select id="userType">
+                            <option value="tecnico">Sou Técnico / Prestador de Serviço</option>
+                            <option value="cliente">Sou Cliente (Residência ou Empresa)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit-email">Acessar plataforma</button>
+                </form>
+            </div>
+
+            <!-- Ilustração decorativa direita -->
+            <div class="illustration-right" aria-hidden="true">
+                <svg viewBox="0 0 220 180" fill="none" xmlns="http://w3.org">
+                    <path d="M25 45C25 35 37 30 43 40C49 30 61 35 61 45C61 59 43 71 43 71C43 71 25 59 25 45Z"
+                        stroke="#18181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M68 55C68 48 76 44 80 51C84 44 92 48 92 55C92 64 80 72 80 72C80 72 68 64 68 55Z"
+                        stroke="#18181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Avião de papel estilizado -->
+                    <path d="M40 120L195 75L140 155L110 125L40 120Z" stroke="#18181B" stroke-width="2"
+                        stroke-linejoin="round" />
+                    <path d="M195 75L110 125V152L132 135" stroke="#18181B" stroke-width="2" stroke-linejoin="round" />
+                </svg>
+            </div>
+        </div>
+    </main>
+
+    <!-- SEÇÃO INFERIOR DE BENEFÍCIOS (IGUAL À SEGUNDA IMAGEM) -->
+    <section class="features-section">
+        <div class="features-container">
+            <h2 class="features-title">Saia na frente com a Work Connection</h2>
+            <p class="features-subtitle">
+                Conectamos técnicos qualificados a residências e empresas que precisam de suporte rápido, seguro e
+                transparente.
+            </p>
+
+            <div class="features-grid">
+                <!-- 1. Encontre e aceite chamados técnicos (Chave e ferramenta) -->
+                <div class="feature-card">
+                    <div class="feature-circle">
+                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://w3.org">
+                            <circle cx="21" cy="11" r="5" fill="#FFFFFF" />
+                            <path
+                                d="M14.7 13.3C14.1 11.4 14.5 9.2 16 7.7C17.6 6.1 20 5.8 22 6.7L19 9.7L22.3 13L25.3 10C26.2 12 25.9 14.4 24.3 16C22.8 17.5 20.6 17.9 18.7 17.3L10.5 25.5C9.4 26.6 7.6 26.6 6.5 25.5C5.4 24.4 5.4 22.6 6.5 21.5L14.7 13.3Z"
+                                stroke="#18181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <p>Encontre e aceite chamados técnicos</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-circle">
+                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://w3.org">
+                            <path d="M18 8C21.3137 8 24 10.6863 24 14V20L26 22H6L8 20V14C8 10.6863 10.6863 8 14 8H18Z"
+                                fill="#FFFFFF" fill-opacity="0.35" />
+                            <path d="M22 14C22 10.6863 19.3137 8 16 8C12.6863 8 10 10.6863 10 14V20L8 22H24L22 20V14Z"
+                                stroke="#18181B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M13.5 25C14.1 26.1 15 26.5 16 26.5C17 26.5 17.9 26.1 18.5 25" stroke="#18181B"
+                                stroke-width="2" stroke-linecap="round" />
+                            <circle cx="23" cy="9" r="3" fill="#7C3AED" stroke="#18181B" stroke-width="1.5" />
+                        </svg>
+                    </div>
+                    <p>Receba alertas de serviços próximos</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-circle">
+                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://w3.org">
+                            <rect x="6" y="7" width="11" height="19" rx="1.5" fill="#FFFFFF" stroke="#18181B"
+                                stroke-width="2" />
+                            <path d="M15 16L21 11L27 16V26H15V16Z" fill="#FFFFFF" stroke="#18181B" stroke-width="2"
+                                stroke-linejoin="round" />
+                            <line x1="9" y1="11" x2="11" y2="11" stroke="#18181B" stroke-width="2"
+                                stroke-linecap="round" />
+                            <line x1="9" y1="15" x2="11" y2="15" stroke="#18181B" stroke-width="2"
+                                stroke-linecap="round" />
+                            <rect x="19" y="20" width="4" height="6" fill="#2563EB" stroke="#18181B"
+                                stroke-width="1.5" />
+                        </svg>
+                    </div>
+                    <p>Atenda residências ou empresas</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-circle">
+                        <svg viewBox="0 0 32 32" fill="none" xmlns="http://w3.org">
+                            <rect x="5" y="9" width="22" height="14" rx="2.5" fill="#FFFFFF" stroke="#18181B"
+                                stroke-width="2" />
+                            <circle cx="16" cy="16" r="3.5" fill="#FFFFFF" stroke="#18181B" stroke-width="2" />
+                            <circle cx="8.5" cy="16" r="1" fill="#18181B" />
+                            <circle cx="23.5" cy="16" r="1" fill="#18181B" />
+                        </svg>
+                    </div>
+                    <p>Compare ganhos médios por dia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notificação rápida (Toast) -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="js/login.js"></script>
+</body>
+
+</html>
